@@ -1,0 +1,15 @@
+﻿@model IEnumerable<VPExam.Models.Cart>
+
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemName)
+        </td>
+        <td style="width: 1%; white-space: nowrap;">
+            <a href="javascript:;" onclick='RemoveItem("@item.Id" )' class="fa fa-minus"></a>
+        </td>
+    </tr>
+}
+

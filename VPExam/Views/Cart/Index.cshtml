@@ -1,0 +1,55 @@
+﻿@model IEnumerable<VPExam.Models.Cart>
+
+<div class="table-responsive col-md-12" id="divajaxCall">
+    <div class="jumbotronajaxdiv">
+        <h3>Scroll to load more items</h3>
+    </div>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemName)
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody id="cartListTbody">
+            @if (Model != null)
+            {
+                @Html.Partial("~/Views/Cart/CartList.cshtml", Model)
+            }
+        </tbody>
+    </table>
+    <div class="row">       
+        <a  href="/Item">Back to Item</a>
+    </div>
+    <div class="row">
+        <div id="loading" style="text-align:center; padding:0 0 0 0">
+            <img src='~/Content/loader.gif' />
+        </div>
+    </div>
+    <div class="divfooter">
+    </div>
+</div>
+<div id="divHide"></div>
+@section scripts{
+    <script src="~/Scripts/lazyLoading.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            $("div#loading").hide();
+        });
+        var ajaxCallUrl = '@Url.RouteUrl("CartDataList")';
+
+        $(window).scroll(scrollHandler);
+
+        
+    </script>
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+@*<link rel="stylesheet" href="~/Content/CustomStyle.css">*@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

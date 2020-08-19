@@ -1,0 +1,16 @@
+﻿@model IEnumerable<VPExam.Models.Item>
+
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td style="width: 1%; white-space: nowrap;align-content:center">
+            <a href="javascript:void(0);" onclick='AddItem("@item.Id","@item.Name")' class="fa fa-plus"></a>           
+        </td>
+    </tr>
+}
+
+
+
